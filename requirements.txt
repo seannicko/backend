@@ -1,0 +1,6 @@
+flask
+flask-classy
+bson
+pymongo
+names
+flask-cors

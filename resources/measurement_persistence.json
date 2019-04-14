@@ -1,0 +1,48 @@
+{
+  "userId": ObjectId(),
+  "measurements":
+    [
+      {
+        "comment": "free text comment",
+        "date": "27-01-38",
+        "frequency": 1,
+        "location": "Left hand",
+        "severity": 1,
+        "specific": "Constipation",
+        "time": "Morning",
+      },
+      {
+        "comment": "free text comment",
+        "date": "78-01-23",
+        "frequency": 1,
+        "location": "Left hand",
+        "severity": 1,
+        "specific": "Constipation",
+        "time": "Morning",
+      }
+    ]
+},
+{
+"userId": ObjectId(),
+"measurements":
+[
+{
+"comment": "free text comment",
+"date": "27-01-38",
+"frequency": 1,
+"location": "Left hand",
+"severity": 1,
+"specific": "Constipation",
+"time": "Morning",
+},
+{
+"comment": "free text comment",
+"date": "78-01-23",
+"frequency": 1,
+"location": "Left hand",
+"severity": 1,
+"specific": "Constipation",
+"time": "Morning",
+}
+]
+}
