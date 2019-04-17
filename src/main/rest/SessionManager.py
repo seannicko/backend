@@ -118,7 +118,7 @@ class SessionManager:
         # TODO switch order of auth objects so that its identifier and item
         return user_list
 
-    def check_User(self, name: str):
+    def checkUser(self, name: str):
         """
         Check DB for user
         """
@@ -131,9 +131,9 @@ class SessionManager:
             user_list.append(user)
         except:
             pass
-        if len(user_list) >0:
+        if len(user_list) == 0:
             return "Valid"
-        return "Not Valid"
+        return "Not Valid", 409
 
     def endSession(self, auth):
         """

@@ -46,8 +46,7 @@ class MeasurementController(FlaskView):
     @route("/<string:auth>/get_measurement", methods=["GET"])
     def getMeasurement(self, auth):
         user = auth.split(':')[0]
-        password = auth.split(":")[1]
-        session = Session(user, password)
+        session = Session(user)
         x = self.mongoService.measurement.find_one({"_id": session._id})
         return json.dumps(x)
 
