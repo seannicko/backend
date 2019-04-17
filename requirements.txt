@@ -4,3 +4,4 @@ bson
 pymongo
 names
 flask-cors
+pandas
