@@ -1,5 +1,4 @@
-from src.test.TestDataLoader import make_id
-
+from src.main.domain.methods import make_id
 
 # 0b87e21afd1e2640e9f14f8c
 # hyrcvbjn
@@ -7,6 +6,6 @@ from src.test.TestDataLoader import make_id
 #9b938710211168f2902f9ed4
 
 if __name__ == '__main__':
-    x = make_id('Sean123')
+    x = make_id('fermina')
     print(x)
 

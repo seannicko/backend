@@ -28,6 +28,7 @@ class SessionManager:
 
     def getSession(self, sessionId, name) -> Any:
         """
+
         return the session refered to by a request. If the session is no longer authenticated then the
         AuthenticationError is raised.
         this method also handles verifying the current request. To implement, handle the AuthenticationError
@@ -38,12 +39,12 @@ class SessionManager:
         """
         currentTime = time()
         if currentTime - float(sessionId) > int(os.getenv('SESSION_TIMEOUT', 1000)):
-            # TODO Sean check me out: timeout of sessions is an environment variable
             logging.info('unauthenticated user request')
             raise AuthenticationError()
-        ref = '{}_{}'.format(sessionId, str(name))
+        ref = '{}_{}'.format(sessionId, str((make_id(name))))
         # TODO handle no sessions byb cathcing keyerror on ref
         try:
+            logging.info("user is logged in")
             return self.sessions[ref]
         except:
             logging.info('unauthenticated user request')

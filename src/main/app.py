@@ -5,6 +5,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from src.main.rest.MeasurementController import MeasurementController
+from src.main.rest.QueryController import QueryController
 from src.main.rest.SessionController import SessionController
 
 logging.basicConfig(level=logging.DEBUG)
@@ -17,6 +18,7 @@ app.config['APPLICATION_ROOT']='/api'
 # This is where we add FlaskView object to the Flask app
 MeasurementController.register(app)
 SessionController.register(app)
+QueryController.register(app)
 
 
 @app.errorhandler(500)

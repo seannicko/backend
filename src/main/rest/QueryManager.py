@@ -8,18 +8,18 @@ import json
 
 import pymongo
 
-class MeasurementManager:
+class QueryManager:
 
     def __init__(self):
         # connect to mongo
         self.service = MongoService()
         pass
 
-    def getMeasurement(self, session: Session) -> MeasurementInput:
-        x = self.service.measurement.find_one({"_id": ObjectId(session._id)})
-        LOG.info("Updated measurement for user {}".format(session._id))
-        if x.acknowledged == None:
-            LOG.error("could not get measurement for user {}".format(session._id))
+    def getMeasurement(self, session: Session):
+        x = self.service.measurement.find_one({"_id": session._id})
+        LOG.info("Got measurement for user {}".format(session._id))
+        if x is None:
+            LOG.error("No {}".format(session._id))
         return x
 
 
