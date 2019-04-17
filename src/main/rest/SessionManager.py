@@ -61,11 +61,12 @@ class SessionManager:
         """
         user = self.getUser(name)
 
-        if password == user.password:
+        if password == user[1]:
             currentSession = Session(str(make_id(name)))
             self.sessions['{}_{}'.format(currentSession.serverTime, str(make_id(name)))] = currentSession
             return str(currentSession.serverTime)
         else:
+
             raise AuthenticationError()
 
     def makeUser(self, name, password):
@@ -101,17 +102,38 @@ class SessionManager:
     def getUser(self, name: str) -> User:
         """
         Get details of a user
-        return details of auser
+        return details of a user
 
         :param name: the plain name string
         :return:
         """
+        user_list = []
         hashedUserName = make_id(name)
         userObject = self.service.users.find_one({'_id': str(hashedUserName)})
+        print(userObject)
         user = userObject['_id']
         password = userObject['password']
+        user_list.append(user)
+        user_list.append(password)
         # TODO switch order of auth objects so that its identifier and item
-        return User(password, user)
+        return user_list
+
+    def check_User(self, name: str):
+        """
+        Check DB for user
+        """
+        user_list = []
+        hashedUserName = make_id(name)
+        try:
+            userObject = self.service.users.find_one({'_id': str(hashedUserName)})
+            print(userObject)
+            user = userObject['_id']
+            user_list.append(user)
+        except:
+            pass
+        if len(user_list) >0:
+            return "Valid"
+        return "Not Valid"
 
     def endSession(self, auth):
         """

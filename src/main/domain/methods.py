@@ -28,8 +28,10 @@ def parseAuth(authString: str) -> Dict[str, str]:
     :param authString:
     :return:
     """
+
     list = authString.split(':')
     out = {}
     out['username'] = list[0]
     out['password'] = list[1]
+    out['password'] = out['password'][:24]
     return out

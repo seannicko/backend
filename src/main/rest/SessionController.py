@@ -17,10 +17,12 @@ class SessionController(FlaskView):
 
         :param auth: a string formatted as <name:password>
         :return: the session id to the user
-        TODO Sean check me out: This implements parseAuth
         """
+
         auth = parseAuth(auth)
+
         try:
+
             return self.sessionManager.startSession(auth['username'], auth['password'])
         except AuthenticationError as e:
             return e.message, e.code
@@ -36,7 +38,7 @@ class SessionController(FlaskView):
         self.sessionManager.endSession(auth)
         return 'ok'
 
-    @route("makeUser/<string:username>/<string:password>")
+    @route("makeUser/<string:username>/<string:password>", methods=["PUT"])
     def makeUser(self, username, password):
         """
         Create a user and store details in the database
@@ -46,6 +48,15 @@ class SessionController(FlaskView):
         :return: welcome string
         TODO assert that the username does not already exist
         """
-        self.sessionManager.makeUser(username, password)
+        password1 = password[:24]
+        self.sessionManager.makeUser(username, password1)
         return 'welcome {}'.format(username)
+
+    @route("checkUser/<string:username>/<string:password>", methods=["POST"])
+    def checkUser(self, username, password):
+        """
+        Check user is in DB
+        """
+        password1 = password[:24]
+        return self.sessionManager.check_User(username)
 
