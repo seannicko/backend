@@ -39,14 +39,16 @@ class SessionManager:
         """
         currentTime = time()
         if currentTime - float(sessionId) > int(os.getenv('SESSION_TIMEOUT', 1000)):
-            logging.info('unauthenticated user request')
+            logging.info('user session timed out')
             raise AuthenticationError()
         ref = '{}_{}'.format(sessionId, str((make_id(name))))
         # TODO handle no sessions byb cathcing keyerror on ref
         try:
             logging.info("user is logged in")
+            logging.debug("user {} logged in with {}".format(name, ref))
             return self.sessions[ref]
         except:
+            logging.debug("user {} failed logged in with {}".format(name, ref))
             logging.info('unauthenticated user request')
             raise AuthenticationError()
 
@@ -62,7 +64,7 @@ class SessionManager:
         """
         user = self.getUser(name)
 
-        if password == user[1]:
+        if password == user.password:
             currentSession = Session(str(make_id(name)))
             self.sessions['{}_{}'.format(currentSession.serverTime, str(make_id(name)))] = currentSession
             return str(currentSession.serverTime)
