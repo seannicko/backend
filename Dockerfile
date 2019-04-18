@@ -1,4 +1,4 @@
-FROM python:3.7.2-alpine
+FROM python:3.7.2
 
 RUN mkdir -p /home
 
@@ -9,6 +9,12 @@ COPY src ./src
 
 COPY requirements.txt ./requirements.txt
 
+
+# The following is to install numpy on full linux
+RUN apt-get dist-upgrade
+RUN apt-get update
+RUN apt-get -y install libc-dev
+RUN apt-get -y install build-essential
 RUN pip install -U pip
 
 # Installing packages
