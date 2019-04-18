@@ -116,10 +116,7 @@ class SessionManager:
         print(userObject)
         user = userObject['_id']
         password = userObject['password']
-        user_list.append(user)
-        user_list.append(password)
-        # TODO switch order of auth objects so that its identifier and item
-        return user_list
+        return User(username=user, password=password)
 
     def checkUser(self, name: str):
         """

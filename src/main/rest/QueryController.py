@@ -42,6 +42,7 @@ class QueryController(FlaskView):
         df = pd.DataFrame(measurements["measurement"])
         fileLocation = 'temp/{}.csv'.format(name)
         df.to_csv(fileLocation)
+        return 'Ok'
 
 
 # <src.main.domain.Session.Session object at 0x105c25b00>
