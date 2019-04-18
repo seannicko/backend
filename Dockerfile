@@ -7,6 +7,8 @@ WORKDIR /home
 # Copying over necessary files
 COPY src ./src
 
+RUN mkdir -p /temp
+
 COPY requirements.txt ./requirements.txt
 
 
