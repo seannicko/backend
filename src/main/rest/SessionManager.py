@@ -125,12 +125,12 @@ class SessionManager:
         user_list = []
         hashedUserName = make_id(name)
         try:
-            userObject = self.service.users.find_one({'_id': str(hashedUserName)})
+            userObject = self.service.users.insert_one(hashedUserName.__dict__)
             print(userObject)
             user = userObject['_id']
             user_list.append(user)
-        except:
-            pass
+        except DuplicateKeyError as e:
+            user_list = [1]
         if len(user_list) == 0:
             return 'Valid'
         return 'Not Valid'
