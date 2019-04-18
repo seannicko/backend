@@ -6,6 +6,6 @@ from src.main.domain.methods import make_id
 #9b938710211168f2902f9ed4
 
 if __name__ == '__main__':
-    x = make_id('fermina')
+    x = make_id('sean')
     print(x)
 
