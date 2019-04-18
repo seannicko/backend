@@ -57,5 +57,6 @@ class SessionController(FlaskView):
         """
         Check user is in DB
         """
-        return self.sessionManager.checkUser(username)
+        answer = self.sessionManager.checkUser(username)
+        return answer
 
