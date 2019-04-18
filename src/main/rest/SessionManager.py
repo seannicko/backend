@@ -132,8 +132,8 @@ class SessionManager:
         except:
             pass
         if len(user_list) == 0:
-            return "Valid"
-        return "Not Valid", 409
+            return True
+        return False
 
     def endSession(self, auth):
         """

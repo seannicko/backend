@@ -52,7 +52,7 @@ class SessionController(FlaskView):
         self.sessionManager.makeUser(username, password1)
         return 'welcome {}'.format(username)
 
-    @route("checkUser/<string:username>", methods=["PUT"])
+    @route("checkUser/<string:username>", methods=["GET"])
     def checkUser(self, username):
         """
         Check user is in DB
