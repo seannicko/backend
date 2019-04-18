@@ -27,6 +27,7 @@ services:
     build: "./"
     volumes:
       - ./src:/home/src
+      - ./temp:/home/temp
     ports:
       - "5000:5000"
     depends_on:
