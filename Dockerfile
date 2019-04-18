@@ -1,13 +1,14 @@
 FROM python:3.7.2
 
 RUN mkdir -p /home
+RUN mkdir -p /home/temp
 
 WORKDIR /home
 
 # Copying over necessary files
 COPY src ./src
 
-RUN mkdir -p /temp
+
 
 COPY requirements.txt ./requirements.txt
 
