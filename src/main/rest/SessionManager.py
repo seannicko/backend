@@ -37,16 +37,18 @@ class SessionManager:
         :param name:
         :return:
         """
+        hashed_username = make_id(name)
         currentTime = time()
         if currentTime - float(sessionId) > int(os.getenv('SESSION_TIMEOUT', 1000)):
             logging.info('user session timed out')
             raise AuthenticationError()
-        ref = '{}_{}'.format(sessionId, str((make_id(name))))
+        ref = '{}_{}'.format(sessionId, str(hashed_username))
+        #print(self.sessions[ref])
         # TODO handle no sessions byb cathcing keyerror on ref
         try:
             logging.info("user is logged in")
             logging.debug("user {} logged in with {}".format(name, ref))
-            return self.sessions[ref]
+            #return self.sessions[ref]
         except:
             logging.debug("user {} failed logged in with {}".format(name, ref))
             logging.info('unauthenticated user request')
