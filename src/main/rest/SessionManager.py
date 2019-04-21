@@ -134,8 +134,8 @@ class SessionManager:
         except:
             pass
         if len(user_list) == 0:
-            return 'Username Available'
-        return userObject['_id']
+            return 'available'
+        return user_list
 
     def endSession(self, auth):
         """
