@@ -135,7 +135,7 @@ class SessionManager:
             pass
         if len(user_list) == 0:
             return 'available'
-        return user_list
+        return 'not available'
 
     def endSession(self, auth):
         """
