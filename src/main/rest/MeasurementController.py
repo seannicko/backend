@@ -50,4 +50,3 @@ class MeasurementController(FlaskView):
         x = self.mongoService.measurement.find_one({"_id": session._id})
         return json.dumps(x)
 
-
